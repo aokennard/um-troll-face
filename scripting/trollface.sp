@@ -29,15 +29,15 @@ public void OnPluginStart() {
 }
 
 public Action SayHook(int client, int args) {
-    char arg[128];
+    // char arg[128];
     char full[256];
     GetCmdArgString(full, sizeof(full));
 
     if (client) {
         char steamID[32];
-        GetClientAuthId(client, AuthId_SteamID64, steamID, STEAMID_LENGTH);
+        GetClientAuthId(client, AuthId_SteamID64, steamID, sizeof(steamID));
         char cvSteamID[32];
-        GetConVarString(g_trollSteamID64, cvSteamID, 32);
+        GetConVarString(g_trollSteamID64, cvSteamID, sizeof(cvSteamID));
         if (strcmp("!troll", full, true) == 0 && strcmp(steamID, cvSteamID, false) == 0) {
             PrintToChatAll("%s", T1);
             PrintToChatAll("%s", T2);
