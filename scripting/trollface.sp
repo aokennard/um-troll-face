@@ -33,11 +33,12 @@ public Action SayHook(int client, int args) {
     char full[256];
     GetCmdArgString(full, sizeof(full));
 
-    char steamID[32];
-	GetClientAuthId(client, AuthId_SteamID64, steamID, STEAMID_LENGTH);
-
     if (client) {
-        if (strcmp("!troll", full, true) == 0 && strcmp(steamID, UM_STEAMID64, false) == 0) {
+        char steamID[32];
+        GetClientAuthId(client, AuthId_SteamID64, steamID, STEAMID_LENGTH);
+        char cvSteamID[32];
+        GetConVarString(g_trollSteamID64, cvSteamID, 32);
+        if (strcmp("!troll", full, true) == 0 && strcmp(steamID, cvSteamID, false) == 0) {
             PrintToChatAll("%s", T1);
             PrintToChatAll("%s", T2);
             PrintToChatAll("%s", T3);
