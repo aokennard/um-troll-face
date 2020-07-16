@@ -29,13 +29,13 @@ public void OnPluginStart() {
 }
 
 public Action SayHook(int client, int args) {
-    char arg[128];
+    // char arg[128];
     char full[256];
     GetCmdArgString(full, sizeof(full));
 
     if (client) {
         char steamID[32];
-        GetClientAuthId(client, AuthId_SteamID64, steamID, STEAMID_LENGTH);
+        GetClientAuthId(client, AuthId_SteamID64, steamID, sizeof(steamID));
         char cvSteamID[32];
         GetConVarString(g_trollSteamID64, cvSteamID, 32);
         PrintToServer("userid %s allowed %s", steamid, cvSteamID);
