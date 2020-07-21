@@ -38,8 +38,7 @@ public Action SayHook(int client, int args) {
         GetClientAuthId(client, AuthId_SteamID64, steamID, sizeof(steamID));
         char cvSteamID[32];
         GetConVarString(g_trollSteamID64, cvSteamID, 32);
-        PrintToServer("userid %s allowed %s", steamid, cvSteamID);
-        if (strcmp("!troll", full, true) == 0 && strcmp(steamID, cvSteamID, false) == 0) {
+        if (strcmp("\"!troll\"", full, true) == 0 && strcmp(steamID, cvSteamID, false) == 0) {
             PrintToChatAll("%s", T1);
             PrintToChatAll("%s", T2);
             PrintToChatAll("%s", T3);
