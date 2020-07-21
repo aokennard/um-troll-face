@@ -29,9 +29,10 @@ public void OnPluginStart() {
 }
 
 public Action SayHook(int client, int args) {
-    // char arg[128];
+    char arg[128];
     char full[256];
     GetCmdArgString(full, sizeof(full));
+    GetCmdArg(1, arg, sizeof(arg));
 
     if (client) {
         char steamID[32];
@@ -52,6 +53,10 @@ public Action SayHook(int client, int args) {
             PrintToChatAll("%s", T11);
             PrintToChatAll("%s", T12);
             PrintToChatAll("%s", T13);
+            return Plugin_Handled;
+        }
+        if (strcmp("\"!box\"", full, true) == 0) {
+            PrintToChatAll("|__%__|", arg);
             return Plugin_Handled;
         }
     }
